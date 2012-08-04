@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instagram Design Doc</title>
+  <style type="text/css" media="screen">
+		body {
+			padding:0px;
+			margin:0px;
+		}
+ 		body {
+			text-align: left;
+			font-family: sans-serif;
+			font-size: 12px;
+		}
+		
+		h3 {
+		  margin: 5px 0px;
+		}
+		div.container {
+			display:inline-block;
+			padding:20px; 
+		}
+    div.left, div#example {
+     float:left;
+     width: 60%;
+     background:#eee;
+    }
+    
+    div.right, div#assets {
+     float:right;
+     width: 32%;
+    }
+    
+    .meta {
+      border-bottom:black 1px dashed;
+      padding-bottom:5px;
+    }
+  </style>
+</head>
+<body>
+	<body>
+	  <div class="container left">
+	    <h1>Daily Instagram</h1>
+	    <div id="example">
+	      <a href="specs/layout.png"><img src="specs/layout.png" width="100%"></a>
+	    </div>
+	    <div id="assets">
+	      <a href="images/img_header.png"><img src="images/img_header.png" width="100%"></a>
+	      <a href="icon.png"><img src="icon.png"></a>
+	    </div>
+	  </div>
+	  <div class="container right">
+	    <div class="meta" id="data_sources">
+	      <h3>Data sources</h3>
+	      <a href="http://instagram.com/developer/">Instagram</a>
+	    </div>
+	    <div class="meta" id="owner">
+	      <h3>Client / Owner</h3>
+	      BERG
+	    </div>
+	    <div class="meta" id="pubs">
+	      <h3>Copy for pubs page</h3>
+	      <ul>
+	        <li><strong>Name:</strong> Daily Instagram</li>
+	        <li><strong>Description:</strong> What was the most popular photo from your friends in the last day?</li>
+        </ul> 
+	    </div>
+	    <div class="meta" id="tech">
+	      <h3>Functional description</h3>
+	      Delivers the most popular* photo from the users contacts for the last 24 hours.
+	      *Popularity algorithm based on likes.
+	    </div>
+	    <div class="meta" id="future">
+	      <h3>Future direction / notes</h3>
+	      <ul>
+	        <li>
+	          Popularity algorithm does not currently take into account that some users have more friends than others, so their photos will have more likes than others. The popularity algorithm needs finessing</li>
+	        <li>We are not sure that we can use the Instagram name in the publication.</li>
+	    </div>
+	</body>
+</html>

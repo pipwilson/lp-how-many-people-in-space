@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+  <head>
+    <title>How many people are in space right now?</title>
+    <style type="text/css" media="screen">
+  		body {
+  			padding:0px;
+  			margin:0px;
+  		}
+   		body {
+  			text-align: left;
+  			font-family: 'Avenir LT Std';
+  			font-size: 22px;
+  		}
+  		div.publication {
+  			width: 384px;
+  			padding:10px 0px;
+  		}
+      div.attribution {
+        text-align:center;
+      }
+
+      h1, h2 {
+        font-size:1.5em;
+        color:white;
+        background-color:black;
+      }
+      h2 {
+        font-size:1.3em;
+      }
+      p.welcome {font-size:18px}
+      p {margin: 0.5em 0}
+      a {color:black;
+        text-decoration:none;}
+    </style>
+  </head>
+  <body>
+  	<body>
+  	  <div id="container">
+  	    <div id="main" role="main">
+  				<div class="publication">
+            <h2>Welcome!</h1>
+            <p class="welcome">This is your first delivery from "how many people are in space right now?" This publication will arrive every time the number of people in space changes.</p>
+
+            <h1>THERE ARE <%= @count %> PEOPLE IN SPACE RIGHT NOW</h1>
+            <p><%= @message %>
+  
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
