@@ -52,6 +52,7 @@ end
 
 get '/sample/' do
   require './instagram_parser'
-  @space_data = SpaceParser::SAMPLE_DATA
+  @count = 8
+  @message = "All on the ISS"
   erb :edition
 end
