@@ -14,7 +14,7 @@ get '/edition/' do
     err_count = 0
     while @space_data.nil?
       begin
-        @space_data = SpaceParser::fetch_data(token)
+        @space_data = SpaceParser::fetch_data()
       rescue NetworkError
         err_count +=1
         if err_count > 2
