@@ -35,7 +35,10 @@ get '/edition/' do
       end
     end
   end
-  if params["delivery_count"] == "0"
+  
+  # strip html from @message, current implentation of render stack gives mojibake with links
+  @message = @message.gsub(/<\s*a.*?>|<\s*\/\s*a>/i, '')
+  if params["delivery_count"] == "0" || params["test"]
     erb :welcome
   elsif Time.now - @date < 1.day 
     erb :welcome
