@@ -12,9 +12,9 @@ get '/edition/' do
     etag Digest::MD5.hexdigest(Time.now.strftime('%l%p'))
     
     err_count = 0
-    while @space_data.nil?
+    while @count.nil?
       begin
-        @space_data = SpaceParser::fetch_data()
+        @count, @message, @date = SpaceParser::fetch_data()
       rescue NetworkError
         err_count +=1
         if err_count > 2
