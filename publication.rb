@@ -41,7 +41,7 @@ get '/edition/' do
   if params["delivery_count"] == "0" || params["test"]
     erb :welcome
   elsif Time.now - @date < 1.day 
-    erb :welcome
+    erb :edition
   end
 end
 
@@ -54,7 +54,7 @@ end
 
 
 get '/sample/' do
-  require './instagram_parser'
+  require './space_parser'
   @count = 8
   @message = "All on the ISS"
   erb :edition
