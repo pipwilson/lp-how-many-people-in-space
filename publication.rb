@@ -15,19 +15,8 @@ get '/edition/' do
     while @count.nil?
       begin
         @count, @message, @date = SpaceParser::fetch_data()
-      rescue NetworkError
-        err_count +=1
-        if err_count > 2
-          return 502
-        end
-      rescue PermanentError
-        err_count +=1
-        if err_count > 2
-          return 500
-        end
+  
       rescue Exception => e
-        puts e.message
-        puts e.backtrace
         err_count +=1
         if err_count > 2
           return 500

@@ -14,6 +14,3 @@ class SpaceParser
     return count, message, date
   end                                
 end
-
-class PermanentError < StandardError; end
-class NetworkError < StandardError; end
