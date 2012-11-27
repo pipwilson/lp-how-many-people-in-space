@@ -3,24 +3,51 @@
 <head>
   <title>How many people are in space right now?</title>
   <style type="text/css" media="screen">
+    body {
+      margin:0px;
+      font-family:courier;
+      font-size:20px;
+    }
     
     #main {
       background-image: url(/images/background.png);
+      width:384px;
+      height:266px;
+      margin-top:10px;
     }
-    
+
     #count {
-      position:absolute;
-      top:20px;
+      width:142px;
+      height:98px;
+      position:relative;
+      top:101px;
       left:20px;
       font-family:'Octin College';
-      font-size:40px;
+      font-size:78px;
       color:white;
+      text-align:center;
+      padding-top:12px;
+      font-weight:bold;
     }
-    
+
     #message {
       color:white;
       font-family:courier;
-      font-size
+      background:black;
+      font-weight:bold;
+      padding:0px 0px 0px 20px;
+      margin:0px;
+      
+    }
+    h2 {
+      margin:.25em 0;
+    }
+    p {
+        margin:0px;
+    }
+    
+    img {
+      display:block;
     }
   </style>
 </head>
@@ -28,7 +55,7 @@
 	<body>
 	  <div id="container">
 	    <div id="main">
-			  <span id='count'><%= @count %></span>
+			  <div id='count'><%= @count %></div>
 	    </div>
 	    <div id='message'>
 	      <%= @message %>
