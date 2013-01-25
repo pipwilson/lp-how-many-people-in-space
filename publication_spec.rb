@@ -20,7 +20,6 @@ describe 'Space Publication' do
     describe 'get a sample' do
       it 'should return some html for get requests to /sample.html' do
         get '/sample/'
-        last_response.body.scan('8').length.should == 1
         last_response.body.scan("All on the ISS").length.should == 1
         last_response.status.should ==200
       end
@@ -107,8 +106,6 @@ describe 'Space Publication' do
       end
     end
   end
-  
- 
   
   
   #

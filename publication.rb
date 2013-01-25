@@ -3,7 +3,6 @@ require 'json'
 
 get '/edition/' do
   require './space_parser'
-  @checkin_time = "#{Time.now().strftime('%l%P')}"
   
   if params["test"]
     etag Digest::MD5.hexdigest("test"+Time.now.getutc.to_s)
@@ -25,10 +24,12 @@ get '/edition/' do
     end
   end
   
-  # strip html from @message, current implentation of render stack gives mojibake with links
+  # strip links tags from @message, current implentation of render stack gives mojibake with links
   @message = @message.gsub(/<\s*a.*?>|<\s*\/\s*a>/i, '')
   if params["delivery_count"] == "0" || params["test"]
     erb :welcome
+    
+  # If the top item happened in the last day
   elsif Time.now - @date < 1.day 
     erb :edition
   end
