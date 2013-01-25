@@ -1,6 +1,6 @@
 {
   "name":"How many people are in space right now?",
-  "description":"Powered by http://www.howmanypeopleareinspacerightnow.com/, an update each time the number of people in space changes.",
+  "description":"Powered by <a href='http://www.howmanypeopleareinspacerightnow.com/'>www.howmanypeopleareinspacerightnow.com</a>, an update each time the number of people in space changes.",
   "delivered_on":"every time the number of people in space changes",
   "delivered_every":"time the number of people in space changes",
   "send_delivery_count":true,
