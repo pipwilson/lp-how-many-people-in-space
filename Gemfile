@@ -4,4 +4,4 @@ gem 'sinatra'
 gem 'thin'
 gem 'json'
 
-gem 'feedzirra'
+gem 'rest-client'

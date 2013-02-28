@@ -13,24 +13,25 @@ get '/edition/' do
     err_count = 0
     while @count.nil?
       begin
-        @count, @message, @date = SpaceParser::fetch_data()
+        @count, @date = SpaceParser::fetch_data()
   
       rescue Exception => e
         err_count +=1
         if err_count > 2
           return 500
+      
         end
       end
     end
   end
   
-  # strip links tags from @message, current implentation of render stack gives mojibake with links
-  @message = @message.gsub(/<\s*a.*?>|<\s*\/\s*a>/i, '')
+
+
   if params["delivery_count"] == "0" || params["test"]
     erb :welcome
     
   # If the top item happened in the last day
-  elsif Time.now - @date < 1.day 
+  elsif Time.now - @date.to_time < 86400
     erb :edition
   end
 end

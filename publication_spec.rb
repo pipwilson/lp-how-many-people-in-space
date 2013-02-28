@@ -20,7 +20,6 @@ describe 'Space Publication' do
     describe 'get a sample' do
       it 'should return some html for get requests to /sample.html' do
         get '/sample/'
-        last_response.body.scan("All on the ISS").length.should == 1
         last_response.status.should ==200
       end
     end
@@ -40,7 +39,7 @@ describe 'Space Publication' do
       
       it 'should return nothing if space parsers date is not today and if this is not the first edition' do
         
-        SpaceParser.should_receive(:fetch_data).and_return(['1', 'On the ISS', Time.now - 1.day])
+        SpaceParser.should_receive(:fetch_data).and_return(['1', Time.now - 86400])
         
         get '/edition/?delivery_count=1'
         
@@ -51,23 +50,21 @@ describe 'Space Publication' do
 
       it 'should return something if edition count = 0' do
         count = "space_count"
-        SpaceParser.should_receive(:fetch_data).and_return([count, 'On the ISS', Time.now - 2.days])
+        SpaceParser.should_receive(:fetch_data).and_return([count,  Time.now - 86400*2])
         
         get '/edition/?delivery_count=0'
         last_response.should be_ok
         last_response.body.scan(count).length.should == 1
-        last_response.body.scan("On the ISS").length.should == 1
         
       end
       
       it 'should return something if date is today' do
          count = "space_count"
-         SpaceParser.should_receive(:fetch_data).and_return([count, 'On the ISS', Time.now])
+         SpaceParser.should_receive(:fetch_data).and_return([count, Time.now])
 
          get '/edition/?delivery_count=6'
          last_response.should be_ok
          last_response.body.scan(count).length.should == 1
-         last_response.body.scan("On the ISS").length.should == 1
 
        end
       
@@ -79,7 +76,7 @@ describe 'Space Publication' do
       end
 
       it 'should set an etag that changes every hour' do
-        SpaceParser.stub!(:fetch_data).and_return(['0', 'some thing something', Time.now])
+        SpaceParser.stub!(:fetch_data).and_return(['0', Time.now])
         
         date_one = Time.parse('3rd Feb 2001 04:05:06+03:30')
         date_two = Time.parse('4th Feb 2001 05:05:06+03:30')
