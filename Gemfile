@@ -5,3 +5,5 @@ gem 'thin'
 gem 'json'
 
 gem 'rest-client'
+
+gem 'redis'

@@ -6,15 +6,15 @@ get '/edition/' do
   
   if params["test"]
     etag Digest::MD5.hexdigest("test"+Time.now.getutc.to_s)
-    @count, @message, @date = SpaceParser::fetch_data()
+    @count = SpaceParser::fetch_data()
   else
     etag Digest::MD5.hexdigest(Time.now.strftime('%l%p'))
     
     err_count = 0
     while @count.nil?
       begin
-        @count, @date = SpaceParser::fetch_data()
-  
+        @number_changed, @count = SpaceParser::fetch_data()
+        
       rescue Exception => e
         err_count +=1
         if err_count > 2
@@ -29,10 +29,10 @@ get '/edition/' do
 
   if params["delivery_count"] == "0" || params["test"]
     erb :welcome
-    
-  # If the top item happened in the last day
-  elsif Time.now - @date.to_time < 86400
-    erb :edition
+  else
+    if @number_changed
+      erb :edition
+    end
   end
 end
 

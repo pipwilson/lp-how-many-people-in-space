@@ -39,18 +39,18 @@ describe 'Space Publication' do
       
       it 'should return nothing if space parsers date is not today and if this is not the first edition' do
         
-        SpaceParser.should_receive(:fetch_data).and_return(['1', Time.now - 86400])
+        SpaceParser.should_receive(:fetch_data).and_return([false, '6'])
         
         get '/edition/?delivery_count=1'
         
         last_response.should be_ok
         last_response.body.scan('html').should == []
-        last_response.status.should ==200
+        last_response.status.should == 200
       end
 
       it 'should return something if edition count = 0' do
         count = "space_count"
-        SpaceParser.should_receive(:fetch_data).and_return([count,  Time.now - 86400*2])
+        SpaceParser.should_receive(:fetch_data).and_return([false, count])
         
         get '/edition/?delivery_count=0'
         last_response.should be_ok
@@ -60,7 +60,7 @@ describe 'Space Publication' do
       
       it 'should return something if date is today' do
          count = "space_count"
-         SpaceParser.should_receive(:fetch_data).and_return([count, Time.now])
+         SpaceParser.should_receive(:fetch_data).and_return([true, count])
 
          get '/edition/?delivery_count=6'
          last_response.should be_ok
