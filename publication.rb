@@ -8,7 +8,7 @@ get '/edition/' do
     etag Digest::MD5.hexdigest("test"+Time.now.getutc.to_s)
     @count = SpaceParser::fetch_data()
   else
-    etag Digest::MD5.hexdigest(Time.now.strftime('%l%p'))
+    etag Digest::MD5.hexdigest(Time.now.getutc.strftime('%l%p'))
     
     err_count = 0
     while @count.nil?

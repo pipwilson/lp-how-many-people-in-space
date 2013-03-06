@@ -21,8 +21,8 @@ class SpaceParser
     
     count = people_in_space['number']
     is_new = false
-    if count.to_s != last_count.to_s
-      @redis.set('people_in_space', count.to_s)
+    if count != last_count
+      @redis.set('people_in_space', count)
       is_new = true
     end
   
