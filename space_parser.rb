@@ -18,10 +18,10 @@ class SpaceParser
     last_count = @redis.get('people_in_space')
     feed = RestClient.get("http://howmanypeopleareinspacerightnow.com/space.json")
     people_in_space = JSON.parse(feed)
-    
     count = people_in_space['number']
     is_new = false
-    if count != last_count
+    puts count.to_s != last_count
+    if count.to_s != last_count
       @redis.set('people_in_space', count)
       is_new = true
     end
