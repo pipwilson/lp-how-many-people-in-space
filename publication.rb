@@ -12,17 +12,17 @@ get '/edition/' do
     
     err_count = 0
     while @count.nil?
-      begin
+      #begin
         @number_changed, @count = SpaceParser::fetch_data()
         
-      rescue Exception => e
+      #rescue Exception => e
         err_count +=1
-        if err_count > 2
-          return 500
+        #if err_count > 2
+         # return 500
       
         end
-      end
-    end
+      #end
+    #end
   end
   
 
