@@ -17,19 +17,17 @@ class SpaceParser
     @redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
     
     last_count = @redis.get('people_in_space')
-    
     date_changed = @redis.get('date_changed')
+    
     today = Time.now.getutc.strftime('%Y-%m-%d')
-    
-    
     date_changed = today if date_changed.nil?
     
     feed = RestClient.get("http://howmanypeopleareinspacerightnow.com/space.json")
     people_in_space = JSON.parse(feed)
     count = people_in_space['number']
+    
     is_new = false
     
-    puts date_changed
     if today == date_changed
       is_new = true
     elsif count.to_s != last_count
